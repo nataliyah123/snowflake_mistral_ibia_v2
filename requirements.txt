@@ -1,4 +1,5 @@
 snowflake.core 
+python >= 3.8
 snowflake-snowpark-python 
 streamlit 
 snowflake.cortex
