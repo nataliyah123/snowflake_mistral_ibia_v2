@@ -46,7 +46,8 @@ def config_options():
                                     'reka-flash',
                                      'mistral-7b',
                                      'llama2-70b-chat',
-                                     'gemma-7b'), key="model_name")
+                                     'gemma-7b',
+                                     'mistral-large2'), key="model_name")
 
     categories = session.table('docs_chunks_table').select('category').distinct().collect()
 
