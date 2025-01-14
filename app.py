@@ -36,7 +36,7 @@ COLUMNS = [
     "category"
 ]
 session = Session.builder.configs(connection_parameters).create()
-session = get_active_session()
+# session = get_active_session()
 root = Root(session)                         
 
 # svc = root.databases[CORTEX_SEARCH_DATABASE].schemas[CORTEX_SEARCH_SCHEMA].cortex_search_services[CORTEX_SEARCH_SERVICE]
