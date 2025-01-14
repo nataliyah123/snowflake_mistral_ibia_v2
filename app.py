@@ -1,4 +1,5 @@
 import streamlit as st # Import python packages
+from snowflake.snowpark import Session
 from snowflake.snowpark.context import get_active_session
 
 from snowflake.core import Root
@@ -12,8 +13,18 @@ pd.set_option("max_colwidth",None)
 NUM_CHUNKS = 3 # Num-chunks provided as context. Play with this to check how it affects your accuracy
 
 # service parameters
-CORTEX_SEARCH_DATABASE = "LLMOPS_DB_IBIA"
-CORTEX_SEARCH_SCHEMA = "LLMOPS_SCHEMA_IBIA"
+
+connection_parameters = {
+    "account": st.secrets["account"],
+    "user": st.secrets["user"],
+    "password": st.secrets["password"],
+    "role": st.secrets["role"],            # Optional
+    "warehouse": st.secrets["warehouse"],
+    "database": st.secrets["database"],
+    "schema": st.secrets["schema"]
+}
+CORTEX_SEARCH_DATABASE = st.secrets["database"]
+CORTEX_SEARCH_SCHEMA = st.secrets["schema"]
 CORTEX_SEARCH_SERVICE = "CC_SEARCH_SERVICE_CS"
 ######
 ######
@@ -24,7 +35,7 @@ COLUMNS = [
     "relative_path",
     "category"
 ]
-
+session = Session.builder.configs(connection_parameters).create()
 session = get_active_session()
 root = Root(session)                         
 
