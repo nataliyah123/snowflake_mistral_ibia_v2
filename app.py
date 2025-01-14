@@ -40,7 +40,7 @@ session = Session.builder.configs(connection_parameters).create()
 root = Root(session)                         
 
 # svc = root.databases[CORTEX_SEARCH_DATABASE].schemas[CORTEX_SEARCH_SCHEMA].cortex_search_services[CORTEX_SEARCH_SERVICE]
-svc = root.databases[session.database].schemas[session.schema].cortex_search_services[CORTEX_SEARCH_SERVICE]
+svc = root.databases[st.secrets["database"]].schemas[st.secrets["schema"]].cortex_search_services[CORTEX_SEARCH_SERVICE]
 
 
 ### Functions
