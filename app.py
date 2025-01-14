@@ -23,8 +23,8 @@ connection_parameters = {
     "database": st.secrets["database"],
     "schema": st.secrets["schema"]
 }
-CORTEX_SEARCH_DATABASE = st.secrets["database"]
-CORTEX_SEARCH_SCHEMA = st.secrets["schema"]
+# CORTEX_SEARCH_DATABASE = st.secrets["database"]
+# CORTEX_SEARCH_SCHEMA = st.secrets["schema"]
 CORTEX_SEARCH_SERVICE = "CC_SEARCH_SERVICE_CS"
 ######
 ######
@@ -39,8 +39,10 @@ session = Session.builder.configs(connection_parameters).create()
 session = get_active_session()
 root = Root(session)                         
 
-svc = root.databases[CORTEX_SEARCH_DATABASE].schemas[CORTEX_SEARCH_SCHEMA].cortex_search_services[CORTEX_SEARCH_SERVICE]
-   
+# svc = root.databases[CORTEX_SEARCH_DATABASE].schemas[CORTEX_SEARCH_SCHEMA].cortex_search_services[CORTEX_SEARCH_SERVICE]
+svc = root.databases[connection_parameters.database].schemas[connection_parameters.schema].cortex_search_services[CORTEX_SEARCH_SERVICE]
+
+
 ### Functions
      
 def config_options():
