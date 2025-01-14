@@ -1,5 +1,5 @@
 snowflake.core 
-python >= 3.11.*
+python == 3.10
 snowflake-snowpark-python 
 streamlit 
 snowflake.cortex
